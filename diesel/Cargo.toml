@@ -68,6 +68,10 @@ rustdoc-args = [
     "32-column-tables",
     "diesel_derives/64-column-tables",
 ]
+86-column-tables = [
+    "64-column-tables",
+    "diesel_derives/86-column-tables",
+]
 __with_asan_tests = [
     "libsqlite3-sys?/bundled",
     "libsqlite3-sys?/with-asan",

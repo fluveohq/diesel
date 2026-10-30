@@ -71,6 +71,7 @@ version = "0.15"
 128-column-tables = ["64-column-tables"]
 32-column-tables = []
 64-column-tables = ["32-column-tables"]
+86-column-tables = ["64-column-tables"]
 chrono = []
 default = []
 mysql = []

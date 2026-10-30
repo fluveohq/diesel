@@ -5,8 +5,14 @@ use quote::quote;
 pub const MAX_TUPLE_SIZE: i32 = 16;
 #[cfg(all(not(feature = "64-column-tables"), feature = "32-column-tables"))]
 pub const MAX_TUPLE_SIZE: i32 = 32;
-#[cfg(all(not(feature = "128-column-tables"), feature = "64-column-tables"))]
+#[cfg(all(
+    not(feature = "128-column-tables"),
+    not(feature = "86-column-tables"),
+    feature = "64-column-tables"
+))]
 pub const MAX_TUPLE_SIZE: i32 = 64;
+#[cfg(all(not(feature = "128-column-tables"), feature = "86-column-tables"))]
+pub const MAX_TUPLE_SIZE: i32 = 86;
 #[cfg(feature = "128-column-tables")]
 pub const MAX_TUPLE_SIZE: i32 = 128;
 
