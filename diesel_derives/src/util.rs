@@ -42,7 +42,7 @@ pub fn parse_eq<T: Parse>(input: ParseStream, help: &str) -> Result<T> {
             input.span(),
             format!(
                 "unexpected end of input, expected `=`\n\
-                 help: The correct format looks like `#[diesel({help})]`",
+                 help: the correct format looks like `#[diesel({help})]`",
             ),
         ));
     }
@@ -57,7 +57,7 @@ pub fn parse_paren<T: Parse>(input: ParseStream, help: &str) -> Result<T> {
             input.span(),
             format!(
                 "unexpected end of input, expected parentheses\n\
-                 help: The correct format looks like `#[diesel({help})]`",
+                 help: the correct format looks like `#[diesel({help})]`",
             ),
         ));
     }
@@ -82,7 +82,7 @@ where
             input.span(),
             format!(
                 "unexpected end of input, expected parentheses\n\
-                 help: The correct format looks like `#[diesel({help})]`",
+                 help: the correct format looks like `#[diesel({help})]`",
             ),
         ));
     }
@@ -131,10 +131,10 @@ fn option_ty_arg(mut ty: &Type) -> Option<&Type> {
 
     match *ty {
         Type::Path(ref ty) => {
-            let last_segment = ty.path.segments.iter().last().unwrap();
+            let last_segment = ty.path.segments.iter().next_back().unwrap();
             match last_segment.arguments {
                 AngleBracketed(ref args) if last_segment.ident == "Option" => {
-                    match args.args.iter().last() {
+                    match args.args.iter().next_back() {
                         Some(GenericArgument::Type(ty)) => Some(ty),
                         _ => None,
                     }
