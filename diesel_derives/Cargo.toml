@@ -13,7 +13,7 @@
 edition = "2021"
 rust-version = "1.78.0"
 name = "diesel_derives"
-version = "2.2.3"
+version = "2.2.7"
 build = false
 include = [
     "src/**/*.rs",
@@ -21,6 +21,7 @@ include = [
     "LICENSE-*",
     "README.md",
 ]
+autolib = false
 autobins = false
 autoexamples = false
 autotests = false
@@ -31,6 +32,22 @@ documentation = "https://diesel.rs/guides/"
 readme = false
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/diesel-rs/diesel/"
+
+[features]
+128-column-tables = ["64-column-tables"]
+32-column-tables = []
+64-column-tables = ["32-column-tables"]
+86-column-tables = ["64-column-tables"]
+chrono = []
+default = []
+mysql = []
+nightly = ["proc-macro2/nightly"]
+postgres = []
+r2d2 = []
+sqlite = []
+time = []
+with-deprecated = []
+without-deprecated = []
 
 [lib]
 name = "diesel_derives"
@@ -66,19 +83,3 @@ version = "1"
 
 [dev-dependencies.dotenvy]
 version = "0.15"
-
-[features]
-128-column-tables = ["64-column-tables"]
-32-column-tables = []
-64-column-tables = ["32-column-tables"]
-86-column-tables = ["64-column-tables"]
-chrono = []
-default = []
-mysql = []
-nightly = ["proc-macro2/nightly"]
-postgres = []
-r2d2 = []
-sqlite = []
-time = []
-with-deprecated = []
-without-deprecated = []

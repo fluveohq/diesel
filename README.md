@@ -35,3 +35,17 @@ about 37 s with parallel rustc and about 98 s without it.
 
 Never move or rewrite this branch: Fluveo pins commits by SHA. A new Diesel version is a new branch named
 `fluveo/v<version>-<width>col`, built the same way: one verbatim import commit, then the patch commit.
+
+## Generator update to 2.2.7
+
+The Diesel runtime remains 2.2.10. The diesel_derives crate is upgraded from
+2.2.3 to the published crates.io 2.2.7 sources. Fluveo's 86-column feature is
+retained in its manifest, tuple-width selection and table-limit diagnostic.
+No custom QueryableByName generator cleanup is included.
+
+The update removes the widespread qualification warnings when Billing joins
+the shared workspace. Embedded rows still require Billing's existing explicit
+QueryableByName implementation under Rust 1.98's strict qualification lint.
+
+Local checks: Billing lint ratchet, 86-column table compilation and PostgreSQL
+row decoding, with no new lint suppressions. Full Router CI remains required.
